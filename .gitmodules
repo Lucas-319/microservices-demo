@@ -1,0 +1,12 @@
+[submodule "config-server"]
+	path = config-server
+	url = https://github.com/Lucas-319/config-server
+[submodule "service-main"]
+	path = service-main
+	url = https://github.com/Lucas-319/service-main
+[submodule "service-task"]
+	path = service-task
+	url = https://github.com/Lucas-319/service-task
+[submodule "service-notification"]
+	path = service-notification
+	url = https://github.com/Lucas-319/service-notification
