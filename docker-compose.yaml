@@ -9,7 +9,7 @@ services:
 
   service-main:
     build:
-      context: ./service.main
+      context: ./service-main
     ports:
       - "8888:8888"
     healthcheck:
@@ -22,7 +22,7 @@ services:
 
   service-notification:
     build:
-      context: ./service.notification
+      context: ./service-notification
     ports:
       - "8082:8082"
     depends_on:
@@ -33,7 +33,7 @@ services:
 
   service-task:
     build:
-      context: ./service.task
+      context: ./service-task
     ports:
       - "8081:8081"
     depends_on:
