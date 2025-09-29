@@ -1,0 +1,49 @@
+services:
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - services-network
+
+  service-main:
+    build:
+      context: ./service.main
+    ports:
+      - "8888:8888"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - services-network
+
+  service-notification:
+    build:
+      context: ./service.notification
+    ports:
+      - "8082:8082"
+    depends_on:
+      service-main:
+        condition: service_healthy
+    networks:
+      - services-network
+
+  service-task:
+    build:
+      context: ./service.task
+    ports:
+      - "8081:8081"
+    depends_on:
+      service-main:
+        condition: service_healthy
+      service-notification:
+        condition: service_started
+    networks:
+      - services-network
+
+networks:
+  services-network:
+    driver: bridge
