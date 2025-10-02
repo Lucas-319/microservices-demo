@@ -2,8 +2,6 @@
 
 Projeto com microsserviços Java/Spring, descoberta de serviços, configuração centralizada, verificação agendada de tarefas e envio de e-mail via Mailhog sob demanda (via Feign).
 
-Repositório: https://github.com/Lucas-319/microservices-demo
-
 ## Stack
 
 - Java 21
