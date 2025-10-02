@@ -2,7 +2,7 @@
 
 Projeto com microsserviços Java/Spring, descoberta de serviços, configuração centralizada, verificação agendada de tarefas e envio de e-mail via Mailhog sob demanda (via Feign).
 
-## Stack
+## Tecnologias
 
 - Java 21
 - Maven
@@ -66,7 +66,7 @@ Serviços e URLs:
   - Config Server (exemplos):
     - http://localhost:8888/config/service-task/default
     - http://localhost:8888/config/service-notification/default
-  - Eureka Dashboard: http://localhost:8888/eureka
+  - Eureka (dashboard): http://localhost:8888/
 - service-notification: http://localhost:8082
 - service-task: http://localhost:8081
   - H2 Console: http://localhost:8081/h2-console
@@ -74,7 +74,7 @@ Serviços e URLs:
     - User: admin
     - Password: (vazio)
 
-Observação: o healthcheck do docker-compose usa /actuator/health. Caso não use Actuator, remova o healthcheck ou adicione o starter correspondente.
+ 
 
 ## Teste rápido
 
@@ -102,7 +102,8 @@ Endpoints úteis:
 - service-notification:
   - POST /notification (uso interno via Feign)
 - service-main:
-  - /eureka (dashboard)
+  - / (dashboard do Eureka)
+  - /eureka (REST API base)
   - /config/service-task/default (Config Server)
   - /config/service-notification/default (Config Server)
 
@@ -124,8 +125,4 @@ service-task/            # API de tarefas (H2, JPA, Feign, scheduler)
 docker-compose.yaml      # Orquestração dos serviços e Mailhog
 ```
 
-## Troubleshooting
-
-- Serviços dependem do service-main; aguarde o Eureka/Config ficar disponível.
-- Feign/Eureka: chamadas entre serviços usam nomes lógicos (ex.: service-notification). Garanta que todos estão registrados no Eureka.
-- Mailhog deve estar rodando em 1025/8025 para envio e visualização de e-mails.
+ 
